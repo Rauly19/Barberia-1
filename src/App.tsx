@@ -7,6 +7,8 @@ export interface Barbero {
   id: number;
   nombre: string;
   especialidad: string;
+  usuario: string;
+  contrasena: string;
 }
 
 export interface Cita {
@@ -21,8 +23,20 @@ export interface Cita {
 
 export function App() {
   const [listaBarberos, setListaBarberos] = useState<Barbero[]>([
-    { id: 1, nombre: 'Miguel "El Fino" Ángel', especialidad: 'Cortes clásicos y Barba' },
-    { id: 2, nombre: 'Daniel Rivas', especialidad: 'Fade moderno y Diseños' }
+    {
+      id: 1,
+      nombre: 'Miguel "El Fino" Ángel',
+      especialidad: 'Cortes clásicos y Barba',
+      usuario: 'miguel',
+      contrasena: '123'
+    },
+    {
+      id: 2,
+      nombre: 'Daniel Rivas',
+      especialidad: 'Fade moderno y Diseños',
+      usuario: 'daniel',
+      contrasena: '123'
+    }
   ]);
 
   const [listaCitas, setListaCitas] = useState<Cita[]>([
@@ -34,6 +48,15 @@ export function App() {
       barberoId: 1,
       fecha: '2026-11-25',
       hora: '11:00'
+    },
+    {
+      id: 2,
+      nombreCliente: 'Luis Hernández',
+      telefonoCliente: '5587654321',
+      servicio: 'Corte Clásico',
+      barberoId: 2,
+      fecha: '2026-11-25',
+      hora: '12:00'
     }
   ]);
 
@@ -44,29 +67,27 @@ export function App() {
   };
 
   const cancelarCita = (idCita: number) => {
-    const citasFiltradas = listaCitas.filter((cita) => cita.id !== idCita);
-    setListaCitas(citasFiltradas);
+    setListaCitas(listaCitas.filter((cita) => cita.id !== idCita));
   };
 
-  const registrarNuevoBarbero = (barbero: Barbero) => {
-    setListaBarberos([...listaBarberos, barbero]);
+  const registrarNuevoBarbero = (nuevoBarbero: Barbero) => {
+    setListaBarberos([...listaBarberos, nuevoBarbero]);
   };
 
   const eliminarBarbero = (idBarbero: number) => {
-    setListaBarberos(listaBarberos.filter((b) => b.id !== idBarbero));
+    setListaBarberos(listaBarberos.filter((barbero) => barbero.id !== idBarbero));
   };
 
   return (
     <div className="contenedor-principal">
-      {/* Selector superior limpio para separar completamente las plataformas */}
       <nav className="barra-navegacion">
-        <button 
+        <button
           className={`enlace-nav ${plataformaActual === 'cliente' ? 'activo' : ''}`}
           onClick={() => setPlataformaActual('cliente')}
         >
           📅 Portal de Citas (Clientes)
         </button>
-        <button 
+        <button
           className={`enlace-nav ${plataformaActual === 'admin' ? 'activo' : ''}`}
           onClick={() => setPlataformaActual('admin')}
         >
@@ -76,13 +97,13 @@ export function App() {
 
       <main>
         {plataformaActual === 'cliente' ? (
-          <PortalCliente 
+          <PortalCliente
             listaCitas={listaCitas}
             listaBarberos={listaBarberos}
             alRegistrarCita={registrarCita}
           />
         ) : (
-          <PanelAdmin 
+          <PanelAdmin
             listaCitas={listaCitas}
             listaBarberos={listaBarberos}
             alCancelarCita={cancelarCita}

@@ -19,23 +19,23 @@ body {
 
 .contenedor-principal {
   width: 100%;
-  max-width: 640px;
+  max-width: 660px;
   background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 20px;
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-  padding: 40px;
+  padding: 38px;
   margin: auto;
 }
 
-/* Barra de navegación superior para cambiar de plataforma */
 .barra-navegacion {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-bottom: 30px;
+  gap: 10px;
+  margin-bottom: 28px;
   border-bottom: 2px solid #f1f5f9;
-  padding-bottom: 15px;
+  padding-bottom: 16px;
+  flex-wrap: wrap;
 }
 
 .enlace-nav {
@@ -43,7 +43,7 @@ body {
   border: none;
   color: #64748b;
   font-weight: 600;
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   cursor: pointer;
   padding: 8px 16px;
   border-radius: 8px;
@@ -60,14 +60,42 @@ body {
   color: #ffffff;
 }
 
+.pestanas-acceso {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 22px;
+  background: #f1f5f9;
+  padding: 6px;
+  border-radius: 12px;
+}
+
+.boton-pestana {
+  background: transparent;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.boton-pestana.activa {
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
 .encabezado-portal {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 24px;
 }
 
 .encabezado-portal h1 {
   color: #0f172a;
-  font-size: 1.75rem;
+  font-size: 1.7rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: 6px;
@@ -75,16 +103,16 @@ body {
 
 .encabezado-portal p {
   color: #64748b;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
 }
 
 .grupo-formulario {
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .grupo-formulario label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 7px;
   font-weight: 600;
   font-size: 0.88rem;
   color: #334155;
@@ -93,7 +121,7 @@ body {
 .grupo-formulario input,
 .grupo-formulario select {
   width: 100%;
-  padding: 12px 16px;
+  padding: 12px 15px;
   border: 1px solid #cbd5e1;
   border-radius: 10px;
   font-size: 0.95rem;
@@ -195,14 +223,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background-color: #0f172a;
   color: white;
   border: none;
-  padding: 14px 20px;
+  padding: 13px 20px;
   border-radius: 10px;
-  font-size: 1rem;
+  font-size: 0.98rem;
   font-weight: 600;
   cursor: pointer;
   width: 100%;
   transition: background-color 0.2s ease;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 .boton-reservar:hover {
@@ -239,11 +267,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background-color: #f1f5f9;
   color: #334155;
   border: 1px solid #cbd5e1;
-  padding: 10px 18px;
+  padding: 9px 16px;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   transition: background-color 0.2s;
 }
 
@@ -251,9 +279,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background-color: #e2e8f0;
 }
 
+.caja-seccion {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 18px;
+  border-radius: 14px;
+  margin-bottom: 22px;
+}
+
 .lista-citas {
   list-style: none;
-  max-height: 400px;
+  max-height: 380px;
   overflow-y: auto;
   padding-right: 4px;
 }
@@ -262,11 +298,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 12px;
+  padding: 15px;
+  margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
 }
 
 .info-cita h3 {
@@ -276,8 +313,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .info-cita p {
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   color: #64748b;
+  margin-top: 2px;
 }
 
 .boton-cancelar {
@@ -290,6 +328,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
   font-size: 0.82rem;
   transition: background-color 0.2s;
+  white-space: nowrap;
 }
 
 .boton-cancelar:hover {

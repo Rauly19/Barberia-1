@@ -7,7 +7,11 @@ interface PortalClienteProps {
   alRegistrarCita: (cita: Cita) => void;
 }
 
-export const PortalCliente: React.FC<PortalClienteProps> = ({ listaCitas, listaBarberos, alRegistrarCita }) => {
+export const PortalCliente: React.FC<PortalClienteProps> = ({
+  listaCitas,
+  listaBarberos,
+  alRegistrarCita
+}) => {
   const [nombreCliente, setNombreCliente] = useState<string>('');
   const [telefonoCliente, setTelefonoCliente] = useState<string>('');
   const [servicioSeleccionado, setServicioSeleccionado] = useState<string>('Corte Clásico');
@@ -57,7 +61,7 @@ export const PortalCliente: React.FC<PortalClienteProps> = ({ listaCitas, listaB
   };
 
   if (citaConfirmada) {
-    const barberoAsignado = listaBarberos.find(b => b.id === citaConfirmada.barberoId);
+    const barberoAsignado = listaBarberos.find((b) => b.id === citaConfirmada.barberoId);
 
     return (
       <div className="seccion-exito">
@@ -67,12 +71,12 @@ export const PortalCliente: React.FC<PortalClienteProps> = ({ listaCitas, listaB
         </p>
         <div className="tarjeta-resumen">
           <p>✂️ <strong>Servicio:</strong> {citaConfirmada.servicio}</p>
-          <p>👨‍🦰 <strong>Barber@:</strong> {barberoAsignado ? barberoAsignado.nombre : 'General'}</p>
+          <p>👨‍🦰 <strong>Barbero:</strong> {barberoAsignado ? barberoAsignado.nombre : 'General'}</p>
           <p>📅 <strong>Fecha:</strong> {citaConfirmada.fecha}</p>
           <p>⏰ <strong>Hora:</strong> {citaConfirmada.hora}</p>
           <p>📞 <strong>Teléfono:</strong> {citaConfirmada.telefonoCliente}</p>
         </div>
-        <button 
+        <button
           className="boton-secundario"
           onClick={() => {
             setCitaConfirmada(null);
@@ -92,13 +96,13 @@ export const PortalCliente: React.FC<PortalClienteProps> = ({ listaCitas, listaB
     <div>
       <div className="encabezado-portal">
         <h1>Reservaciones en Línea</h1>
-        <p>Elije barbero y reserva tu cita</p>
+        <p>Elige tu barbero, selecciona fecha y aparta tu horario</p>
       </div>
 
       <form onSubmit={manejarEnvio}>
         <div className="grupo-formulario">
           <label>1. Selecciona el Barbero</label>
-          <select 
+          <select
             value={barberoSeleccionado}
             onChange={(e) => {
               setBarberoSeleccionado(Number(e.target.value));
@@ -116,8 +120,8 @@ export const PortalCliente: React.FC<PortalClienteProps> = ({ listaCitas, listaB
         <div className="grupo-formulario">
           <label>2. Selecciona la Fecha</label>
           <div className="contenedor-calendario-input">
-            <input 
-              type="date" 
+            <input
+              type="date"
               value={fechaCita}
               onChange={(e) => {
                 setFechaCita(e.target.value);
@@ -161,31 +165,34 @@ export const PortalCliente: React.FC<PortalClienteProps> = ({ listaCitas, listaB
 
         <div className="grupo-formulario">
           <label>4. Selecciona el Servicio</label>
-          <select 
+          <select
             value={servicioSeleccionado}
             onChange={(e) => setServicioSeleccionado(e.target.value)}
           >
             <option value="Corte Clásico">Corte Clásico</option>
-            <option value="Corte + Barba">Desvanecido</option>
-            <option value="Otro">Otro </option>
+            <option value="Corte + Barba">Corte + Barba</option>
+            <option value="Afeitado Tradicional">Afeitado Tradicional</option>
+            <option value="Diseño de Barba">Diseño de Barba</option>
           </select>
         </div>
 
         <div className="grupo-formulario">
           <label>5. Tu Nombre Completo</label>
-          <input 
-            type="text" 
+          <input
+            type="text"
             value={nombreCliente}
             onChange={(e) => setNombreCliente(e.target.value)}
+            placeholder="Ej. Carlos Pérez"
           />
         </div>
 
         <div className="grupo-formulario">
           <label>6. Tu Teléfono de Contacto</label>
-          <input 
-            type="tel" 
+          <input
+            type="tel"
             value={telefonoCliente}
             onChange={(e) => setTelefonoCliente(e.target.value)}
+            placeholder="Ej. 5512345678"
           />
         </div>
 
